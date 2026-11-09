@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar materia</title>
+</head>
+<body>
+
+    <h1>Registrar nueva materia</h1>
+
+    <form th:action="@{/guardar-materia}" 
+          th:object="${materia}" 
+          method="post">
+
+        <label>Nombre de la materia:</label>
+        <input type="text" th:field="*{nombre}" required>
+        <br><br>
+
+        <label>Profesor:</label>
+        <input type="text" th:field="*{profesor}" required>
+        <br><br>
+
+        <label>Créditos:</label>
+        <input type="number" th:field="*{creditos}" required>
+        <br><br>
+
+        <button type="submit">Guardar materia</button>
+
+    </form>
+
+    <br>
+    <a href="/materias-vista">Volver al listado</a>
+
+</body>
+</html>

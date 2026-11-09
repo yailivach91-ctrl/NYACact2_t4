@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de materias</title>
+    <a href="/nueva-materia">
+        <button type="button">Registrar nueva materia</button>
+    
+</a>
+</head>
+<body>
+    <h2 th:text="${nombreProyecto}"></h2>
+    <p th:text="${autor}"></p>
+    <h1>Materias disponibles</h1>
+    <form action="/materias-vista" method="get">
+        <label>Filtrar por profesor:</label>
+        <input type="text" name="profesor">
+        <button type="submit">Buscar</button>
+        
+    </form>
+
+    <h2>Listado</h2>
+
+    <ul>
+        <li th:each="materia : ${materias}">
+            <span th:text="${materia.nombre}"></span>
+            -
+            <span th:text="${materia.profesor}"></span>
+            -
+            <span th:text="${materia.creditos}"></span> créditos
+
+            <a th:href="@{/materias-vista/{id}(id=${materias.indexOf(materia)})}">
+                Ver detalle
+            </a>
+        </li>
+    </ul>
+
+</body>
+</html>
